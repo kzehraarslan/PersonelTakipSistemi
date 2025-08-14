@@ -7,7 +7,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="container mt-4">
-        <h2>Hoşgeldiniz, <asp:Label ID="lblKullanici" runat="server" CssClass="text-primary fw-bold" /></h2>
+        <h2>Hoş geldiniz, <asp:Label ID="lblKullanici" runat="server" CssClass="text-primary fw-bold" /></h2>
         <p class="mb-4">Bugünün Tarihi: <asp:Label ID="lblTarih" runat="server" /></p>
 
         <div class="row g-3">

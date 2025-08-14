@@ -13,12 +13,13 @@ namespace PersonelSistemi
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Oturumda rol var mı, yoksa login sayfasına yönlendir
             if (Session["Rol"] == null)
             {
                 Response.Redirect("Login.aspx");
                 return;
             }
+
+            string rol = Session["Rol"].ToString().Trim();
 
             if (!IsPostBack)
             {
@@ -26,6 +27,9 @@ namespace PersonelSistemi
                 DoldurUnvanlar();
                 DoldurPersonelListesi();
                 btnGuncelle.Visible = false;
+
+                // Sadece Admin'e formu göster
+                pnlForm.Visible = string.Equals(rol, "Admin", StringComparison.OrdinalIgnoreCase);
             }
         }
 
@@ -79,6 +83,8 @@ namespace PersonelSistemi
 
         protected void btnEkle_Click(object sender, EventArgs e)
         {
+            if (!RolKontrolu("Admin")) return;
+
             if (!AlanlarGecerliMi()) return;
 
             using (SqlConnection conn = new SqlConnection(connStr))
@@ -103,15 +109,7 @@ namespace PersonelSistemi
 
         protected void btnGuncelle_Click(object sender, EventArgs e)
         {
-            // Rol kontrolü: büyük/küçük harf duyarsız
-            string rol = (Session["Rol"] ?? "").ToString().Trim();
-
-            if (!string.Equals(rol, "Admin", StringComparison.OrdinalIgnoreCase))
-            {
-                lblMesaj.ForeColor = System.Drawing.Color.Red;
-                lblMesaj.Text = "Güncelleme işlemi için yetkiniz yok.";
-                return;
-            }
+            if (!RolKontrolu("Admin")) return;
 
             if (ViewState["PersonelID"] == null)
             {
@@ -179,6 +177,8 @@ namespace PersonelSistemi
 
         protected void gvPersonel_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //if (!RolKontrolu("Admin")) return;
+
             GridViewRow row = gvPersonel.SelectedRow;
             ViewState["PersonelID"] = gvPersonel.DataKeys[row.RowIndex].Value;
 
@@ -200,7 +200,6 @@ namespace PersonelSistemi
 
             ListItem unvItem = ddlUnvan.Items.FindByText(unvText);
             if (unvItem != null) ddlUnvan.SelectedValue = unvItem.Value;
-          
 
             btnEkle.Visible = false;
             btnGuncelle.Visible = true;
@@ -211,14 +210,7 @@ namespace PersonelSistemi
 
         protected void gvPersonel_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            string rol = (Session["Rol"] ?? "").ToString().Trim();
-
-            if (!string.Equals(rol, "Admin", StringComparison.OrdinalIgnoreCase))
-            {
-                lblMesaj.ForeColor = System.Drawing.Color.Red;
-                lblMesaj.Text = "Silme işlemi için yetkiniz yok.";
-                return;
-            }
+            if (!RolKontrolu("Admin")) return;
 
             int id = Convert.ToInt32(gvPersonel.DataKeys[e.RowIndex].Value);
 
@@ -243,10 +235,11 @@ namespace PersonelSistemi
 
             if (e.Row.RowType == DataControlRowType.DataRow && !string.Equals(rol, "Admin", StringComparison.OrdinalIgnoreCase))
             {
-                // Silme butonunu kaldırıyoruz (genelde 1.sütun delete butonu)
+                // Silme ve Seç butonlarını kaldırıyoruz
                 if (e.Row.Cells.Count > 1)
                 {
-                    e.Row.Cells[1].Controls.Clear();
+                    e.Row.Cells[0].Controls.Clear(); // Select
+                    e.Row.Cells[1].Controls.Clear(); // Delete
                 }
             }
         }
@@ -265,6 +258,18 @@ namespace PersonelSistemi
             btnGuncelle.Visible = false;
             ViewState["PersonelID"] = null;
             lblMesaj.Text = "";
+        }
+
+        private bool RolKontrolu(string rolGerekli)
+        {
+            string rol = (Session["Rol"] ?? "").ToString().Trim();
+            if (!string.Equals(rol, rolGerekli, StringComparison.OrdinalIgnoreCase))
+            {
+                lblMesaj.ForeColor = System.Drawing.Color.Red;
+                lblMesaj.Text = $"{rolGerekli} yetkisi gereklidir.";
+                return false;
+            }
+            return true;
         }
     }
 }

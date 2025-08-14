@@ -12,44 +12,48 @@
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
 
-                <div class="card shadow p-4 mb-4">
-                    <h3 class="mb-3">Personel Ekle / Güncelle</h3>
+                <!-- Personel Ekle / Güncelle Paneli -->
+                <asp:Panel ID="pnlForm" runat="server" Visible="false">
+                    <div class="card shadow p-4 mb-4">
+                        <h3 class="mb-3">Personel Ekle / Güncelle</h3>
 
-                    <asp:Label ID="lblMesaj" runat="server" CssClass="text-danger" />
+                        <asp:Label ID="lblMesaj" runat="server" CssClass="text-danger" />
 
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <asp:TextBox ID="txtAd" runat="server" CssClass="form-control" Placeholder="Ad" />
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <asp:TextBox ID="txtAd" runat="server" CssClass="form-control" Placeholder="Ad" />
+                            </div>
+                            <div class="col-md-6">
+                                <asp:TextBox ID="txtSoyad" runat="server" CssClass="form-control" Placeholder="Soyad" />
+                            </div>
+                            <div class="col-md-6">
+                                <asp:TextBox ID="txtTelefon" runat="server" CssClass="form-control" Placeholder="Telefon" />
+                            </div>
+                            <div class="col-md-6">
+                                <asp:TextBox ID="txtAdres" runat="server" CssClass="form-control" Placeholder="Adres" />
+                            </div>
+                            <div class="col-md-6">
+                                <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" Placeholder="Email" />
+                            </div>
+                            <div class="col-md-6">
+                                <asp:TextBox ID="txtMaas" runat="server" CssClass="form-control" Placeholder="Maaş" />
+                            </div>
+                            <div class="col-md-6">
+                                <asp:DropDownList ID="ddlDepartman" runat="server" CssClass="form-select" />
+                            </div>
+                            <div class="col-md-6">
+                                <asp:DropDownList ID="ddlUnvan" runat="server" CssClass="form-select" />
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <asp:TextBox ID="txtSoyad" runat="server" CssClass="form-control" Placeholder="Soyad" />
-                        </div>
-                        <div class="col-md-6">
-                            <asp:TextBox ID="txtTelefon" runat="server" CssClass="form-control" Placeholder="Telefon" />
-                        </div>
-                        <div class="col-md-6">
-                            <asp:TextBox ID="txtAdres" runat="server" CssClass="form-control" Placeholder="Adres" />
-                        </div>
-                        <div class="col-md-6">
-                            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" Placeholder="Email" />
-                        </div>
-                        <div class="col-md-6">
-                            <asp:TextBox ID="txtMaas" runat="server" CssClass="form-control" Placeholder="Maaş" />
-                        </div>
-                        <div class="col-md-6">
-                            <asp:DropDownList ID="ddlDepartman" runat="server" CssClass="form-select" />
-                        </div>
-                        <div class="col-md-6">
-                            <asp:DropDownList ID="ddlUnvan" runat="server" CssClass="form-select" />
+
+                        <div class="mt-4 d-flex gap-2">
+                            <asp:Button ID="btnEkle" runat="server" Text="Personel Ekle" CssClass="btn btn-success" OnClick="btnEkle_Click" />
+                            <asp:Button ID="btnGuncelle" runat="server" Text="Personel Güncelle" CssClass="btn btn-warning" Visible="false" OnClick="btnGuncelle_Click" />
                         </div>
                     </div>
+                </asp:Panel>
 
-                    <div class="mt-4 d-flex gap-2">
-                        <asp:Button ID="btnEkle" runat="server" Text="Personel Ekle" CssClass="btn btn-success" OnClick="btnEkle_Click" />
-                        <asp:Button ID="btnGuncelle" runat="server" Text="Personel Güncelle" CssClass="btn btn-warning" Visible="false" OnClick="btnGuncelle_Click" />
-                    </div>
-                </div>
-
+                <!-- Personel Listesi -->
                 <div class="card shadow p-4">
                     <h3 class="mb-3">Personel Listesi</h3>
 

@@ -11,35 +11,26 @@ namespace PersonelSistemi
 {
 
 
-    public partial class Raporlar
+    public partial class Maaslar
     {
 
         /// <summary>
-        /// btnMaasRapor control.
+        /// lblMesaj control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMaasRapor;
+        protected global::System.Web.UI.WebControls.Label lblMesaj;
 
         /// <summary>
-        /// btnMesaiRapor control.
+        /// ddlPersonel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMesaiRapor;
-
-        /// <summary>
-        /// pnlMaasRaporlari control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlMaasRaporlari;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPersonel;
 
         /// <summary>
         /// txtBaslangic control.
@@ -60,84 +51,57 @@ namespace PersonelSistemi
         protected global::System.Web.UI.WebControls.TextBox txtBitis;
 
         /// <summary>
-        /// btnGetir control.
+        /// txtSaatlikUcret control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGetir;
+        protected global::System.Web.UI.WebControls.TextBox txtSaatlikUcret;
 
         /// <summary>
-        /// hfChartData control.
+        /// btnHesapla control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfChartData;
+        protected global::System.Web.UI.WebControls.Button btnHesapla;
 
         /// <summary>
-        /// hfChartDataUnvan control.
+        /// btnGuncelle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfChartDataUnvan;
+        protected global::System.Web.UI.WebControls.Button btnGuncelle;
 
         /// <summary>
-        /// pnlMesaiRaporlari control.
+        /// btnIptal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlMesaiRaporlari;
+        protected global::System.Web.UI.WebControls.Button btnIptal;
 
         /// <summary>
-        /// ddlAy control.
+        /// lblSonuc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlAy;
+        protected global::System.Web.UI.WebControls.Label lblSonuc;
 
         /// <summary>
-        /// ddlYil control.
+        /// gvMaaslar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlYil;
-
-        /// <summary>
-        /// btnMesaiGetir control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMesaiGetir;
-
-        /// <summary>
-        /// hfMesaiChartData control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfMesaiChartData;
-
-        /// <summary>
-        /// hfMesaiGunlukChartData control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfMesaiGunlukChartData;
+        protected global::System.Web.UI.WebControls.GridView gvMaaslar;
     }
 }

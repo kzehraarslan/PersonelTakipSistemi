@@ -19,6 +19,8 @@
         <a href="Departmanlar.aspx" class="btn btn-outline-secondary btn-sm mx-1">Departmanlar</a>        
         <a href="PersonelGirisCikis.aspx" class="btn btn-outline-info btn-sm mx-1">Giriş/Çıkış Saatleri</a>
         <a href="Izinler.aspx" class="btn btn-outline-warning btn-sm mx-1">İzinler</a>
+        <a href="Maaslar.aspx" class="btn btn-outline-success btn-sm mx-1">Maaşlar</a>
+        <a href="Raporlar.aspx" class="btn btn-outline-success btn-sm mx-1">Raporlar</a>
         <a href="Login.aspx" class="btn btn-outline-danger btn-sm mx-1">Çıkış</a>
     
     </nav>
